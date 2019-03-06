@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oPenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,11 +40,17 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.fader1 = new NAudio.Gui.Fader();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.waveViewer1 = new NAudio.Gui.WaveViewer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.fnamelabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.duratLabel = new System.Windows.Forms.Label();
+            this.histogramView1 = new Accord.Controls.HistogramView();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -127,36 +134,57 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.fader1);
+            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.waveViewer1);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox1.Location = new System.Drawing.Point(12, 31);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(712, 410);
+            this.groupBox1.Size = new System.Drawing.Size(712, 533);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
-            // fader1
+            // button3
             // 
-            this.fader1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.fader1.Location = new System.Drawing.Point(382, 234);
-            this.fader1.Maximum = 0;
-            this.fader1.Minimum = 0;
-            this.fader1.Name = "fader1";
-            this.fader1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.fader1.Size = new System.Drawing.Size(324, 69);
-            this.fader1.TabIndex = 1;
-            this.fader1.Text = "fader1";
-            this.fader1.Value = -2147483648;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button3.Location = new System.Drawing.Point(163, 349);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 48);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Stop";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Location = new System.Drawing.Point(81, 349);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 48);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Pause";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Location = new System.Drawing.Point(0, 349);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 48);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Play";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // waveViewer1
             // 
-            this.waveViewer1.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.waveViewer1.BackColor = System.Drawing.Color.SteelBlue;
             this.waveViewer1.ForeColor = System.Drawing.SystemColors.Info;
             this.waveViewer1.Location = new System.Drawing.Point(0, 78);
             this.waveViewer1.Name = "waveViewer1";
             this.waveViewer1.SamplesPerPixel = 128;
-            this.waveViewer1.Size = new System.Drawing.Size(706, 150);
+            this.waveViewer1.Size = new System.Drawing.Size(706, 265);
             this.waveViewer1.StartPosition = ((long)(0));
             this.waveViewer1.TabIndex = 0;
             this.waveViewer1.WaveStream = null;
@@ -166,17 +194,20 @@
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Location = new System.Drawing.Point(731, 42);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(375, 399);
+            this.groupBox2.Size = new System.Drawing.Size(375, 522);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.histogramView1);
+            this.panel1.Controls.Add(this.duratLabel);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.fnamelabel);
             this.panel1.Location = new System.Drawing.Point(6, 21);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(363, 358);
+            this.panel1.Size = new System.Drawing.Size(363, 495);
             this.panel1.TabIndex = 0;
             // 
             // fnamelabel
@@ -189,11 +220,50 @@
             this.fnamelabel.TabIndex = 0;
             this.fnamelabel.Text = "FName";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 46);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(102, 17);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Длительность";
+            // 
+            // duratLabel
+            // 
+            this.duratLabel.AutoSize = true;
+            this.duratLabel.Location = new System.Drawing.Point(115, 46);
+            this.duratLabel.Name = "duratLabel";
+            this.duratLabel.Size = new System.Drawing.Size(64, 17);
+            this.duratLabel.TabIndex = 2;
+            this.duratLabel.Text = "00:00 00";
+            // 
+            // histogramView1
+            // 
+            this.histogramView1.BinWidth = null;
+            this.histogramView1.Histogram = ((Accord.Statistics.Visualizations.Histogram)(resources.GetObject("histogramView1.Histogram")));
+            this.histogramView1.Location = new System.Drawing.Point(15, 109);
+            this.histogramView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.histogramView1.Name = "histogramView1";
+            this.histogramView1.NumberOfBins = null;
+            this.histogramView1.Size = new System.Drawing.Size(334, 362);
+            this.histogramView1.TabIndex = 3;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 580);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1118, 22);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1118, 602);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
@@ -222,13 +292,19 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
-        private NAudio.Gui.Fader fader1;
         private NAudio.Gui.WaveViewer waveViewer1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label fnamelabel;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label duratLabel;
+        private System.Windows.Forms.Label label1;
+        private Accord.Controls.HistogramView histogramView1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
     }
 }
 

@@ -18,7 +18,7 @@ namespace waudioVis
     public partial class Form1 : Form
     {
         NAudio.Wave.Mp3FileReader mpFile;
-        NAudio.Wave.WaveOut wvOut;
+        NAudio.Wave.IWavePlayer wvOut;
         NAudio.Wave.WaveStream pStream;
 
         public Form1()
@@ -47,7 +47,8 @@ namespace waudioVis
                 } while (cntByte != 0); //считываем mp3 файл
                 pStream = WaveFormatConversionStream.CreatePcmStream(mpFile);
                 //waveViewer1.WaveStream = pStream;
-                waveViewer1.WaveStream = pStream;
+                waveViewer1.WaveStream = mpFile;
+                duratLabel.Text = String.Format("{0:00}:{1:00}", (int)mpFile.TotalTime.TotalMinutes, mpFile.TotalTime.Seconds);
 
             }
         }
@@ -55,6 +56,18 @@ namespace waudioVis
         private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (wvOut != null) wvOut.Play();
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
         }
     }
 }
