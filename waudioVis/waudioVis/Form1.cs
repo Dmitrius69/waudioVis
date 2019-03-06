@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NAudio;
 using NAudio.Dsp;
+using NAudio.Wave;
 using Accord;
 using Accord.Audio;
 
@@ -18,6 +19,7 @@ namespace waudioVis
     {
         NAudio.Wave.Mp3FileReader mpFile;
         NAudio.Wave.WaveOut wvOut;
+        NAudio.Wave.WaveStream pStream;
 
         public Form1()
         {
@@ -43,6 +45,10 @@ namespace waudioVis
                     cntByte = mpFile.Read(sampleBuffer, 0, sampleBuffer.Length);
                     
                 } while (cntByte != 0); //считываем mp3 файл
+                pStream = WaveFormatConversionStream.CreatePcmStream(mpFile);
+                //waveViewer1.WaveStream = pStream;
+                waveViewer1.WaveStream = pStream;
+
             }
         }
 
