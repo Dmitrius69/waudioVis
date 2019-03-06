@@ -38,11 +38,12 @@ namespace waudioVis
             if (opf.FileName != null)
             {
                 fnamelabel.Text = opf.FileName;
-                //wvOut.Init();
                 mpFile = new NAudio.Wave.Mp3FileReader(opf.FileName); //открываем файл
+                wvOut.Init(mpFile);//инициализируем устройство вывода звука
                 do
                 {
                     cntByte = mpFile.Read(sampleBuffer, 0, sampleBuffer.Length);
+                    
                     
                 } while (cntByte != 0); //считываем mp3 файл
                 pStream = WaveFormatConversionStream.CreatePcmStream(mpFile);
@@ -68,6 +69,32 @@ namespace waudioVis
             {
                 MessageBox.Show(exp.Message);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (wvOut != null) wvOut.Pause();
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (wvOut != null) wvOut.Stop();
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+
         }
     }
 }
