@@ -62,6 +62,7 @@ namespace waudioVis
                 pStream = WaveFormatConversionStream.CreatePcmStream(mpFile);
                 //waveViewer1.WaveStream = pStream;
                 waveViewer1.WaveStream = mpFile;
+                //wavechart1.
                 duratLabel.Text = String.Format("{0:00}:{1:00}", (int)mpFile.TotalTime.TotalMinutes, mpFile.TotalTime.Seconds);
 
             }
