@@ -27,6 +27,19 @@ namespace waudioVis
             wvOut = new NAudio.Wave.WaveOut();
         }
 
+        //быстрое преобразование Фурье!
+        public double[] FFT(double[] data)
+        {
+            double[] fft = new double[data.Length];
+            System.Numerics.Complex[] fftComplex = new System.Numerics.Complex[data.Length];
+            for (int i = 0; i < data.Length; i++)
+                fftComplex[i] = new System.Numerics.Complex(data[i], 0.0);
+            Accord.Math.FourierTransform.FFT(fftComplex, Accord.Math.FourierTransform.Direction.Forward);
+            for (int i = 0; i < data.Length; i++)
+                fft[i] = fftComplex[i].Magnitude;
+            return fft;
+        }
+
         private void oPenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int cntByte;
@@ -49,6 +62,7 @@ namespace waudioVis
                 pStream = WaveFormatConversionStream.CreatePcmStream(mpFile);
                 //waveViewer1.WaveStream = pStream;
                 waveViewer1.WaveStream = mpFile;
+                //wavechart1.
                 duratLabel.Text = String.Format("{0:00}:{1:00}", (int)mpFile.TotalTime.TotalMinutes, mpFile.TotalTime.Seconds);
 
             }
