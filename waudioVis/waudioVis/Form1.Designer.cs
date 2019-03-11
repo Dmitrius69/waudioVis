@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oPenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,16 +46,19 @@
             this.waveViewer1 = new NAudio.Gui.WaveViewer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.histogramView1 = new Accord.Controls.HistogramView();
             this.duratLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.fnamelabel = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.wavechart1 = new Accord.Controls.Wavechart();
+            this.scottPlotUC1 = new ScottPlot.ScottPlotUC();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -135,7 +138,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.wavechart1);
+            this.groupBox1.Controls.Add(this.trackBar1);
+            this.groupBox1.Controls.Add(this.progressBar1);
+            this.groupBox1.Controls.Add(this.scottPlotUC1);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
@@ -151,9 +156,9 @@
             // button3
             // 
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(168, 645);
+            this.button3.Location = new System.Drawing.Point(167, 685);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 48);
+            this.button3.Size = new System.Drawing.Size(75, 33);
             this.button3.TabIndex = 4;
             this.button3.Text = "Stop";
             this.button3.UseVisualStyleBackColor = true;
@@ -162,9 +167,9 @@
             // button2
             // 
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(86, 645);
+            this.button2.Location = new System.Drawing.Point(86, 685);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 48);
+            this.button2.Size = new System.Drawing.Size(75, 33);
             this.button2.TabIndex = 3;
             this.button2.Text = "Pause";
             this.button2.UseVisualStyleBackColor = true;
@@ -173,9 +178,9 @@
             // button1
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(5, 645);
+            this.button1.Location = new System.Drawing.Point(6, 685);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 48);
+            this.button1.Size = new System.Drawing.Size(75, 33);
             this.button1.TabIndex = 2;
             this.button1.Text = "Play";
             this.button1.UseVisualStyleBackColor = true;
@@ -205,7 +210,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.histogramView1);
             this.panel1.Controls.Add(this.duratLabel);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.fnamelabel);
@@ -213,18 +217,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(363, 495);
             this.panel1.TabIndex = 0;
-            // 
-            // histogramView1
-            // 
-            this.histogramView1.BinWidth = null;
-            this.histogramView1.DataSource = ((object)(resources.GetObject("histogramView1.DataSource")));
-            this.histogramView1.Histogram = ((Accord.Statistics.Visualizations.Histogram)(resources.GetObject("histogramView1.Histogram")));
-            this.histogramView1.Location = new System.Drawing.Point(15, 109);
-            this.histogramView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.histogramView1.Name = "histogramView1";
-            this.histogramView1.NumberOfBins = null;
-            this.histogramView1.Size = new System.Drawing.Size(334, 362);
-            this.histogramView1.TabIndex = 3;
             // 
             // duratLabel
             // 
@@ -263,17 +255,32 @@
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // wavechart1
+            // scottPlotUC1
             // 
-            this.wavechart1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.wavechart1.Location = new System.Drawing.Point(0, 368);
-            this.wavechart1.Name = "wavechart1";
-            this.wavechart1.RangeX = ((Accord.DoubleRange)(resources.GetObject("wavechart1.RangeX")));
-            this.wavechart1.RangeY = ((Accord.DoubleRange)(resources.GetObject("wavechart1.RangeY")));
-            this.wavechart1.SimpleMode = false;
-            this.wavechart1.Size = new System.Drawing.Size(706, 254);
-            this.wavechart1.TabIndex = 5;
-            this.wavechart1.Text = "wavechart1";
+            this.scottPlotUC1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.scottPlotUC1.Location = new System.Drawing.Point(6, 348);
+            this.scottPlotUC1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.scottPlotUC1.Name = "scottPlotUC1";
+            this.scottPlotUC1.Size = new System.Drawing.Size(700, 223);
+            this.scottPlotUC1.TabIndex = 5;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(45, 586);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(615, 23);
+            this.progressBar1.TabIndex = 6;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.updateChart);
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(36, 619);
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(635, 56);
+            this.trackBar1.TabIndex = 7;
             // 
             // Form1
             // 
@@ -290,9 +297,11 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -320,9 +329,11 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label duratLabel;
         private System.Windows.Forms.Label label1;
-        private Accord.Controls.HistogramView histogramView1;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private Accord.Controls.Wavechart wavechart1;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private ScottPlot.ScottPlotUC scottPlotUC1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
