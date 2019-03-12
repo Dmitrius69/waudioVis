@@ -17,7 +17,7 @@ namespace waudioVis
 {
     public partial class Form1 : Form
     {
-        private int RATE = 44100; // ширина сэмпла
+        private int RATE = 44100; // ширина сэмпла!
         private int BUFFERSIZE = (int)Math.Pow(2, 11); // размер буффера, всегда должен быть степенью 2 -ки
         NAudio.Wave.Mp3FileReader mpFile;
         NAudio.Wave.IWavePlayer wvOut;
