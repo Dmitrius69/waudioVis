@@ -108,7 +108,7 @@ namespace waudioVis
                 if (wvOut != null)
                 {
                     wvOut.Play();
-                    timer1.Interval = 300; //интервал срабатывания таймера 3 сек
+                    timer1.Interval = 100; //интервал срабатывания таймера 3 сек
                     timer1.Enabled = true;
                 }
             }
