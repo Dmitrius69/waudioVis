@@ -86,6 +86,10 @@
     <Reference Include="NAudio.Lame, Version=1.0.9.26885, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NAudio.Lame.1.0.9\lib\net40\NAudio.Lame.dll</HintPath>
     </Reference>
+    <Reference Include="ScottPlot, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Csharp-Data-Visualization\projects\18-09-19_microphone_FFT_revisited\ScottPlotMicrophoneFFT\ScottPlot-2018-09-09\bin\Debug\ScottPlot.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
