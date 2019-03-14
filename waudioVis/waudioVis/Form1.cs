@@ -13,6 +13,7 @@ using NAudio.Wave;
 using Accord;
 using Accord.Audio;
 
+
 namespace waudioVis
 {
     public partial class Form1 : Form
@@ -22,12 +23,14 @@ namespace waudioVis
         NAudio.Wave.Mp3FileReader mpFile;
         NAudio.Wave.IWavePlayer wvOut;
         NAudio.Wave.WaveStream pStream;
+        
 
         public Form1()
         {
             InitializeComponent();
             wvOut = new NAudio.Wave.WaveOut();
             SetupGraphLabel();
+                
         }
 
         //настраиваем вид графиков
