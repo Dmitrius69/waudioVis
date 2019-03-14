@@ -18,7 +18,7 @@ namespace waudioVis
     public partial class Form1 : Form
     {
         private int RATE = 44100; // ширина сэмпла!
-        private int BUFFERSIZE = (int)Math.Pow(2, 11); // размер буффера, всегда должен быть степенью 2 -ки
+        private int BUFFERSIZE = (int)Math.Pow(2, 13); // размер буффера, всегда должен быть степенью 2 -ки
         NAudio.Wave.Mp3FileReader mpFile;
         NAudio.Wave.IWavePlayer wvOut;
         NAudio.Wave.WaveStream pStream;
@@ -88,7 +88,7 @@ namespace waudioVis
                 trackBar1.Maximum = (int)mpFile.TotalTime.TotalSeconds;
                 progressBar1.Maximum = (int)mpFile.TotalTime.TotalSeconds;
 
-                trackBar1.TickFrequency = trackBar1.Maximum / 30;
+                trackBar1.TickFrequency = trackBar1.Maximum / 10;
                 
 
 
@@ -151,7 +151,7 @@ namespace waudioVis
             progressBar1.Value = trackBar1.Value;
 
             //анализ сигнала
-            bool needsAutoScaling = true;
+            bool needsAutoScaling = checkBox1.Checked;
             int frameSize = BUFFERSIZE;
             var audioBytes = new byte[frameSize];
             mpFile.Read(audioBytes, 0, frameSize);
@@ -180,7 +180,7 @@ namespace waudioVis
                 Int16 val = BitConverter.ToInt16(audioBytes, i * 2);
 
                 // store the value in Ys as a percent (+/- 100% = 200%)
-                pcm[i] = (double)(val) / Math.Pow(2, 16) * 200.0;
+                pcm[i] = (double)(val) / Math.Pow(2, 16) * 50.0;
             }
 
             // calculate the full FFT

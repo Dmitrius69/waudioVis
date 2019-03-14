@@ -54,6 +54,7 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -219,6 +220,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.duratLabel);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.fnamelabel);
@@ -292,6 +294,18 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.updateChart);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(18, 83);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(112, 21);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.Text = "Автомаштаб";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -345,6 +359,7 @@
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
