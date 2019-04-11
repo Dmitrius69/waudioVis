@@ -75,7 +75,8 @@ namespace waudioVis
                     cntByte = mpFile.Read(sampleBuffer, 0, sampleBuffer.Length);
                     gCntByte += cntByte;
                    
-                        
+
+
                 } while (cntByte != 0); //считываем mp3 файл
                 pStream = WaveFormatConversionStream.CreatePcmStream(mpFile);
                 //waveViewer1.WaveStream = pStream;

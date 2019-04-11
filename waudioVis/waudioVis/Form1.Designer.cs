@@ -49,12 +49,12 @@
             this.waveViewer1 = new NAudio.Gui.WaveViewer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.duratLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.fnamelabel = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -216,6 +216,7 @@
             // 
             // waveViewer1
             // 
+            this.waveViewer1.AutoScroll = true;
             this.waveViewer1.BackColor = System.Drawing.Color.SteelBlue;
             this.waveViewer1.ForeColor = System.Drawing.SystemColors.Info;
             this.waveViewer1.Location = new System.Drawing.Point(4, 17);
@@ -250,6 +251,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(369, 381);
             this.panel1.TabIndex = 0;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(18, 83);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(89, 17);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.Text = "Автомаштаб";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // duratLabel
             // 
@@ -295,18 +308,6 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.updateChart);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(18, 83);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(112, 21);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.Text = "Автомаштаб";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
