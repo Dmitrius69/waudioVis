@@ -36,9 +36,10 @@ namespace waudioVis
         //настраиваем вид графиков
         private void SetupGraphLabel()
         {
-            scottPlotUC1.fig.labelTitle = "FFT";
-            scottPlotUC1.fig.labelX = "частотное распределение";
-            scottPlotUC1.Redraw();
+            formsPlot1.plt.Title("FFT");
+            
+            formsPlot1.plt.XLabel("частотное распределение");
+            formsPlot1.Render();
             timer1.Enabled = false;
         }
 
@@ -199,20 +200,21 @@ namespace waudioVis
             Array.Copy(fft, fftReal, fftReal.Length);
 
             // plot the Xs and Ys for both graphs
-            //scottPlotUC1.Clear();
-            //scottPlotUC1.PlotSignal(pcm, pcmPointSpacingMs, Color.Blue);
-            scottPlotUC1.Clear();
-            scottPlotUC1.PlotSignal(fftReal, fftPointSpacingHz, Color.Blue);
+            //formsPlot1.Clear();
+            //formsPlot1.PlotSignal(pcm, pcmPointSpacingMs, Color.Blue);
+            formsPlot1.plt.Clear();
+            formsPlot1.plt.PlotSignal(fftReal, fftPointSpacingHz,0,0, Color.Blue);
+            formsPlot1.Render();
 
             // optionally adjust the scale to automatically fit the data
             if (needsAutoScaling)
             {
-                scottPlotUC1.AxisAuto();
+                formsPlot1.plt.AxisAuto();
                 //scottPlotUC2.AxisAuto();
                 needsAutoScaling = false;
             }
 
-            //scottPlotUC1.PlotSignal(Ys, RATE);
+            //formsPlot1.PlotSignal(Ys, RATE);
 
             //numberOfDraws += 1;
             //lblStatus.Text = $"Analyzed and graphed PCM and FFT data {numberOfDraws} times";
